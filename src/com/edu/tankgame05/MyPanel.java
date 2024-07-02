@@ -55,7 +55,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     Image image3 = null;
 
 
-    int enemyTankSize = 3;
+    int enemyTankSize = 10;
 
     public MyPanel() {
         hero = new Hero(100, 100);
@@ -64,7 +64,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         // 初始化敌人坦克
         for (int i = 0; i < enemyTankSize; i++) {
 //            enemyTanks.add(new EnemyTank((100 * (i+1)),0));
-            EnemyTank enemyTank = new EnemyTank(100 * (i + 1), 0);
+            EnemyTank enemyTank = new EnemyTank(200 * (i + 1), 0);
+            // 将enemyTanks 设置给 enemyTank !!!
+            enemyTank.setEnemyTanks(enemyTanks);
             enemyTanks.add(enemyTank);
 //            System.out.println("Enemy tank " + i + " position: (" + enemyTank.getX() + ", " + enemyTank.getY() + ")");
             enemyTank.setDirect(2);
@@ -221,10 +223,12 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     public void drawTank(int x, int y, Graphics g, int direct, int type) {
         switch (type) {
 //            根据不能类型的坦克，绘制不同颜色的坦克
-            case 0: // 敌人坦克
+            // 敌人坦克
+            case 0:
                 g.setColor(Color.cyan);
                 break;
-            case 1: // 玩家坦克
+            // 玩家坦克
+            case 1:
                 g.setColor(Color.yellow);
                 break;
         }
@@ -326,8 +330,10 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     public void hitTank(Shot s, Tank enemyTank) {
         //判断s 击中坦克
         switch (enemyTank.getDirect()) {
-            case 0: //坦克向上
-            case 2: // 坦克向下
+            //坦克向上
+            // 坦克向下
+            case 0:
+            case 2:
                 if (s.getX() > enemyTank.getX() && s.getX() < enemyTank.getX() + 40
                         && s.getY() > enemyTank.getY() && s.getY() < enemyTank.getY() + 60) {
                     s.isLive = false;
@@ -340,8 +346,9 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
                 }
                 break;
-            case 1: // 坦克向左
-            case 3: // 坦克向右
+            // 坦克向左// 坦克向右
+            case 1:
+            case 3:
                 if (s.getX() > enemyTank.getX() && s.getX() < enemyTank.getX() + 60
                         && s.getY() > enemyTank.getY() && s.getY() < enemyTank.getY() + 40) {
                     s.isLive = false;

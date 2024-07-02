@@ -8,7 +8,7 @@ public class Tank {
     private int x;
     private int y;
     private int direct;
-    private int speed = 5;
+    private int speed = 2;
 
     //坦克是否存活
     boolean isLive = true;

@@ -45,7 +45,7 @@ public class Shot  implements Runnable{
                     x -= speed;
                     break;
             }
-            System.out.println("x坐标"+x+"y坐标"+y);
+//            System.out.println("x坐标"+x+"y坐标"+y);
 
             if(!(x >= 0 && x <= 1000 && y >= 0 && y <= 750 && isLive)){
                 isLive = false;
