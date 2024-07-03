@@ -37,6 +37,8 @@ public class EnemyTank extends Tank implements Runnable {
         this.random = new Random(System.nanoTime());
     }
 
+
+
     // 编写方法，判断当前的敌人坦克是否和 enemyTanks 中的其它坦克发生了重叠或者碰撞
     private boolean isTouchEnemyTank() {
         switch (this.getDirect()) {
